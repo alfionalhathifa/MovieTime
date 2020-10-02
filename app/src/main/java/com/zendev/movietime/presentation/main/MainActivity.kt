@@ -1,7 +1,8 @@
-package com.zendev.movietime
+package com.zendev.movietime.presentation.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.zendev.movietime.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
