@@ -1,4 +1,9 @@
 package com.zendev.movietime.core.data.source.remote.response
 
-class ListMovieResponse {
-}
+import com.google.gson.annotations.SerializedName
+
+data class ListMovieResponse(
+
+    @field:SerializedName("results")
+    val results: List<MovieResponse>
+)

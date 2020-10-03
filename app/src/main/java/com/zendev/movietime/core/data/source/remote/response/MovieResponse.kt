@@ -1,4 +1,20 @@
 package com.zendev.movietime.core.data.source.remote.response
 
-class MovieResponse {
-}
+import com.google.gson.annotations.SerializedName
+
+data class MovieResponse(
+    @field:SerializedName("id")
+    val id: String,
+
+    @field:SerializedName("title")
+    val title: String,
+
+    @field:SerializedName("overview")
+    val overview: String,
+
+    @field:SerializedName("poster_path")
+    val poster_path: String,
+
+    @field:SerializedName("backdrop_path")
+    val backdrop_path: String
+)
