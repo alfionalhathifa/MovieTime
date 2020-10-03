@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
-        <activity android:name=".presentation.favorite.FavoriteActivity"></activity>
+        <activity android:name=".presentation.favorite.FavoriteActivity" />
         <activity android:name=".presentation.detail.DetailActivity" />
         <activity android:name=".presentation.main.MainActivity">
             <intent-filter>
