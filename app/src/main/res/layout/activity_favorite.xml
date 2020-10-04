@@ -1,9 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_favorite"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.favorite.FavoriteActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent"
+        tools:targetApi="o">
+
+        <include layout="@layout/layout_empty" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_movie_favorite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="5dp"
+            tools:listitem="@layout/item_grid_movie" />
+
+    </RelativeLayout>
+
+</LinearLayout>
