@@ -5,4 +5,6 @@
     <string name="no_internet_image_description">No Internet Image Description</string>
     <string name="empty_image_description">Empty Image Description</string>
     <string name="something_wrong">Oops.. something went wrong</string>
+    <string name="add_favorite">+ Add To Favorite</string>
+    <string name="remove_favorite">- Remove From Favorite</string>
 </resources>
