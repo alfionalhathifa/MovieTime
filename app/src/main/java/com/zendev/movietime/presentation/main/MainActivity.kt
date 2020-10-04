@@ -1,5 +1,6 @@
 package com.zendev.movietime.presentation.main
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.zendev.movietime.R
 import com.zendev.movietime.core.data.Resource
 import com.zendev.movietime.core.ui.MovieAdapter
+import com.zendev.movietime.presentation.detail.DetailActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_no_internet.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -22,6 +24,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val movieAdapter = MovieAdapter()
+
+        movieAdapter.onItemClick = { selectedData ->
+            val intent = Intent(this, DetailActivity::class.java)
+            intent.putExtra(DetailActivity.EXTRA_DATA, selectedData)
+            startActivity(intent)
+        }
 
         mainViewModel.movie.observe(this, Observer { movie ->
             if (movie != null) {
