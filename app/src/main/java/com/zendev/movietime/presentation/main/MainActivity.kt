@@ -3,6 +3,8 @@ package com.zendev.movietime.presentation.main
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -11,6 +13,7 @@ import com.zendev.movietime.R
 import com.zendev.movietime.core.data.Resource
 import com.zendev.movietime.core.ui.MovieAdapter
 import com.zendev.movietime.presentation.detail.DetailActivity
+import com.zendev.movietime.presentation.favorite.FavoriteActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_no_internet.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -18,12 +21,11 @@ import org.koin.android.viewmodel.ext.android.viewModel
 class MainActivity : AppCompatActivity() {
 
     private val mainViewModel: MainViewModel by viewModel()
+    private val movieAdapter = MovieAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        val movieAdapter = MovieAdapter()
 
         movieAdapter.onItemClick = { selectedData ->
             val intent = Intent(this, DetailActivity::class.java)
@@ -31,6 +33,28 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        swipe_refresh.setOnRefreshListener {
+            swipe_refresh.isRefreshing = false
+            showMovieList()
+        }
+
+        showMovieList()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.menu_favorite) {
+            val intent = Intent(this, FavoriteActivity::class.java)
+            startActivity(intent)
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun showMovieList() {
         mainViewModel.movie.observe(this, Observer { movie ->
             if (movie != null) {
                 when (movie) {
